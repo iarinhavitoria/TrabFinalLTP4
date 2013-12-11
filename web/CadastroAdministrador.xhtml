@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Seja Bem Vido !!! </title>
+    </h:head>
+    <h:body>
+       <p:layout fullPage="true">  
+  
+    <p:layoutUnit position="north" size="100" header="Seja Bem Vindo !!" resizable="" closable="" collapsible="">  
+        <h:outputText value="Sistema de Hotelaria" />  
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="south" size="100" header="Academicos Desenvolvedores" resizable="true" closable="" collapsible="">  
+        <h:outputText value="Iara e Rosiane." />  
+    </p:layoutUnit>  
+  
+  
+    <p:layoutUnit position="center">  
+        <h:form>  
+  
+    <p:growl id="growl" sticky="true" showDetail="true"/>  
+        <p:tab id="personal" title="">  
+  
+            <p:panel header="Dados Administrador">  
+              
+                <h:messages errorClass="error"/>  
+                  
+                <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
+                    <h:outputText value="Nome: *" />  
+                    <p:inputText required="true" label="Nome"  
+                            value="" />  
+                      
+                    <h:outputText value="Usuario: *" />  
+                    <p:inputText required="true" label="Usuario"  
+                            value="" />  
+                      
+                    <h:outputText value="Senha: " />  
+                    <p:inputText value="" />  
+                     
+                                         
+                </h:panelGrid>  
+                
+                <p:panel>
+                    <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                    <p:commandButton value="Remover" rendered="#{funcaoController.entidade.id > 0}" onclick="msgRemover.show()"/>
+                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${funcaoController}"/>
+                </p:panel> 
+                
+            </p:panel>  
+            
+            
+        </p:tab>                   
+</h:form>  
+                      
+    </p:layoutUnit>  
+  
+</p:layout>  
+    </h:body>
+</html>
+
