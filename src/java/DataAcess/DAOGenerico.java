@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author iara
  */
 public abstract class DAOGenerico<T> implements IRepositorio<T> {
-    @PersistenceContext(name="TrabalhoFinalLTP4PU")
+    @PersistenceContext(name="TrabFinalLTP4PU")
     protected EntityManager manager;
     private Class tipo;
     public DAOGenerico (Class t) {

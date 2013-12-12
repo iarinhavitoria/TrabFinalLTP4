@@ -18,9 +18,7 @@ import javax.persistence.Query;
  * @author iara
  */
 @Stateless(name = "IFuncionarioRepositorio")
-public class FuncionarioDAO 
-    extends DAOGenerico<Funcionario>
-    implements IFuncionarioRepositorio {
+public class FuncionarioDAO extends DAOGenerico<Funcionario> implements IFuncionarioRepositorio {
     public FuncionarioDAO() {
         super(Funcionario.class);
     }
@@ -28,7 +26,7 @@ public class FuncionarioDAO
     @Override
     public List<Funcionario> Buscar(Funcionario obj) {
         // Corpo da consulta
-        String consulta = "select f from Funcionario f";
+        String consulta = "select * from Funcionario f";
 
         // A parte where da consulta
         String filtro = "";
@@ -43,14 +41,6 @@ public class FuncionarioDAO
                 parametros.put("nome", obj.getNome());
             }
 
-            if (obj.getLogin() != null && obj.getLogin().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro += " and ";
-                }
-                filtro += " f.usuario=:usuario ";
-                parametros.put("usuario", obj.getLogin());
-            }
-
             if (obj.getIdFuncionario()!= null && obj.getIdFuncionario()> 0) {
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
@@ -59,12 +49,10 @@ public class FuncionarioDAO
                 parametros.put("idfuncionario", obj.getIdFuncionario());
             }
 
-            if (obj.getSenha() != null && obj.getSenha().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " f.senha=:senha";
-                parametros.put("senha", obj.getSenha());
+            if (obj.getCPF()!= null && obj.getCPF().length() > 0) {
+                
+                filtro += " AND f.cpf like '%"+obj.getCPF()+"%'";
+                
             }
 
             if (obj.getFuncao()!= null && obj.getFuncao().toString().length() > 0) {
@@ -92,19 +80,33 @@ public class FuncionarioDAO
         return query.getResultList();
 
     }
-    
+
     @Override
-    public Funcionario fazerLogin(String usuario){
-        String consulta = "select f from Funcionario f where f.usuario=:usuario";
-                // Cria a consulta no JPA
-        Query query = manager.createQuery(consulta);
+    public boolean Apagar(Funcionario obj) {
+        
+        try {
+            Query query = manager.createQuery("Update Funcionario f.idfuncionario =:idfuncionario");
+            query.setParameter("id", obj.getIdFuncionario());
+            query.executeUpdate();
+            
+            return true;
 
-        // Aplica os parâmetros da consulta
-        query.setParameter("usuario", usuario);
+        } catch (Exception ex) {
+            ex.printStackTrace();
 
-        // Executa a consulta
-        return (Funcionario)query.getSingleResult();
-
-
+            return false;
+        }
+        
     }
+
+    @Override
+    public Funcionario fazerLogin(String login) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
+          
+    
+    
 }

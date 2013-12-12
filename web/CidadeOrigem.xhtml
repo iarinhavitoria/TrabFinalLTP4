@@ -57,7 +57,7 @@
                 (*) Campos de Preenchimento Obrigatório
                
                     <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
-                    <p:commandButton value="Remover" rendered="#{cidadeOrigemController.entidade.idCidadeOrigem > 0}" onclick="msgRemover.show()"/>
+                    <p:commandButton value="Remover" onclick="msgRemover.show()"/>
                     <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${cidadeOrigemController.voltar()}" />
                    
                 <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"

@@ -63,12 +63,12 @@ public class HospedeController implements Serializable{
     }
 
     public String editar() {
-        return "HospedeEditar.xhtml";
+        return "HospedeCadastrar.xhtml";
     }
 
     public String criar() {
         entidade = new Hospede();
-        return "HospedeEditar.xhtml";
+        return "HospedeCadastrar.xhtml";
     }
 
     public String apagar() {

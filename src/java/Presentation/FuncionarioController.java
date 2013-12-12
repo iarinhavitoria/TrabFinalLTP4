@@ -63,12 +63,12 @@ public class FuncionarioController implements Serializable{
     }
 
     public String editar() {
-        return "FuncionarioEditar.xhtml";
+        return "Funcionario.xhtml";
     }
 
     public String criar() {
         entidade = new Funcionario();
-        return "FuncionarioEditar.xhtml";
+        return "Funcionario.xhtml";
     }
 
     public String apagar() {
@@ -80,7 +80,7 @@ public class FuncionarioController implements Serializable{
 
     public String filtrar() {
         lista = dao.Buscar(filtro);
-        return "FuncionarioListar";
+        return "FuncionarioListar.xhtml";
     }
 
     public String voltar() {
@@ -103,6 +103,9 @@ public class FuncionarioController implements Serializable{
         }
         return lista;
     }
+    
+    
+    
 
     public void setListagem(List<Funcionario> listagem) {
         this.lista = listagem;

@@ -15,34 +15,34 @@
                     <f:facet name="header">  
                         Filtros  
                     </f:facet>  
-                    
-                    <h:outputLabel value="ID Funcao:" />
-                    <p:inputText value="${funcaoController.filtro.idFuncao}" />  
+
+                    <h:outputLabel value="ID Funcionario:" />
+                    <p:inputText value="${funcionarioController.filtro.idFuncionario}" />  
                     
                     <h:outputLabel value="Nome:" />
-                    <p:inputText value="${funcaoController.filtro.nome}" />  
+                    <p:inputText value="${funcionarioController.filtro.nome}" />  
 
-                    <h:outputLabel value="Horas Semanais:" />
-                    <p:inputText value="${funcaoController.filtro.horasSemanais}" />  
-                    
+                    <h:outputLabel value="CPF:" />
+                    <p:inputText value="${funcionarioController.filtro.CPF}" /> 
+                   
                     <f:facet name="footer">  
-                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${funcaoController.filtrar()}" style="margin:0"/>  
-                        <p:commandButton ajax="false" value="Nova Funcao" action="${funcaoController.criar()}" />
+                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${funcionarioController.filtrar()}" style="margin:0"/>  
+                        <p:commandButton ajax="false" value="Novo Funcionário" action="${funcionarioController.criar()}" />
                     </f:facet>  
                 </p:panelGrid>
-                <p:dataTable value="${funcaoController.listagem}" var="func" emptyMessage="Registros não Encontrados!">
+                <p:dataTable value="${funcionarioController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
                     <p:column sortBy="funcao" headerText="ID Funcao: ">
-                        ${func.idFuncao}
+                        ${item.idFuncionario}
                     </p:column>
                     <p:column sortBy="nome" headerText="Nome: ">
-                        ${func.nome}
+                        ${item.nome}
                     </p:column>
-                    <p:column sortBy="horasSemanais" headerText="Horas Semanais: ">
-                        ${func.horasSemanais}
+                    <p:column sortBy="horasSemanais" headerText="CPF: ">
+                        ${item.CPF}
                     </p:column>
                     <p:column headerText="Editar">
                         <p:commandButton value="Editar" ajax="false" action="${funcaoController.editar()}">
-                            <f:setPropertyActionListener target="${funcaoController.entidade}" value="${func}" />
+                            <f:setPropertyActionListener target="${funcaoController.entidade}" value="${item}" />
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
@@ -50,5 +50,3 @@
         </ui:composition>
     </body>
 </html>
-
-

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./TemplateGeral.xhtml">
+
+            <ui:define name="content">
+                <p:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        Filtros  
+                    </f:facet>  
+                    
+                    <h:outputLabel value="ID Cidade:" />
+                    <p:inputText value="${cidadeOrigemController.filtro.idCidadeOrigem}" />  
+                    
+                    <h:outputLabel value="Cidade:" />
+                    <p:inputText value="${cidadeOrigemController.filtro.nome}" />  
+
+                    <h:outputLabel value="Estado:" />
+                    <p:inputText value="${cidadeOrigemController.filtro.estado}" />  
+                    
+                    <f:facet name="footer">  
+                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${cidadeOrigemController.filtrar()}" style="margin:0"/>  
+                        <p:commandButton ajax="false" value="Nova Cidade" action="${cidadeOrigemController.criar()}" />
+                    </f:facet>  
+                </p:panelGrid>
+                <p:dataTable value="${cidadeOrigemController.lista}" var="cidade" emptyMessage="Registros não Encontrados!">
+                    <p:column sortBy="IdCidade" headerText="ID Cidade: ">
+                        ${cidade.idCidadeOrigem}
+                    </p:column>
+                    <p:column sortBy="nome" headerText="Cidade: ">
+                        ${cidade.nome}
+                    </p:column>
+                    <p:column sortBy="Estado" headerText="Estado: ">
+                        ${cidade.estado}
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" ajax="false" action="${cidadeOrigemController.editar()}">
+                            <f:setPropertyActionListener target="${cidadeOrigemController.entidade}" value="${cidade}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
+
+

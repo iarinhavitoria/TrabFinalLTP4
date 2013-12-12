@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./TemplateGeral.xhtml">
+
+            <ui:define name="content">
+                <p:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        Filtros  
+                    </f:facet>  
+
+                    <h:outputLabel value="ID Hospede:" />
+                    <p:inputText value="${hospedeController.filtro.idHospede}" />  
+                    
+                    <h:outputLabel value="Nome:" />
+                    <p:inputText value="${hospedeController.filtro.nome}" />  
+
+                    <h:outputLabel value="CPF:" />
+                    <p:inputText value="${hospedeController.filtro.CPF}" />
+                    
+                    <h:outputLabel value="Telefone:" />
+                    <p:inputText value="${hospedeController.filtro.telefone}" /> 
+                   
+                    <h:outputLabel value="Cidade Origem:" />
+                    <p:selectOneMenu value="#{hospedeController.filtro.cidade}" converter="${cidadeOrigemConverter}">
+                        <f:selectItems value="#{cidadeOrigemController}" />
+                    </p:selectOneMenu>
+                    <f:facet name="footer">  
+                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${hospedeController.filtrar()}" style="margin:0"/>  
+                        <p:commandButton ajax="false" value="Novo Funcionário" action="${hospedeController.criar()}" />
+                    </f:facet>  
+                </p:panelGrid>
+                <p:dataTable value="${hospedeController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
+                    <p:column sortBy="idHospede" headerText="ID Hospede: ">
+                        ${item.idHospede}
+                    </p:column>
+                    <p:column sortBy="nome" headerText="Nome: ">
+                        ${item.nome}
+                    </p:column>
+                    <p:column sortBy="CPF" headerText="CPF: ">
+                        ${item.CPF}
+                    </p:column>
+                    <p:column sortBy="Telefone" headerText="Telefone: ">
+                        ${item.telefone}
+                    </p:column>
+                    <p:column sortBy="CidadeOrigem" headerText="CidadeOrigem: ">
+                        ${item.cidade}
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" ajax="false" action="${hospedeController.editar()}">
+                            <f:setPropertyActionListener target="${hospedeController.entidade}" value="${item}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

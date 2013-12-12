@@ -65,12 +65,12 @@ public class FuncaoController implements Serializable {
     }
 
     public String editar() {
-        return "FuncaoEditar.xhtml";
+        return "FuncaoCadastrar1.xhtml";
     }
 
     public String criar() {
         entidade = new Funcao();
-        return "FuncaoEditar.xhtml";
+        return "FuncaoCadastrar1.xhtml";
     }
 
     public String apagar() {
