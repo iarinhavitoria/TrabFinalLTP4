@@ -51,12 +51,14 @@
                 
                 
                 <p:submenu label="Relatórios" icon="ui-icon-note">
-                    
+                    <p:menuitem ajax="false" actionListener="#{funcaoController.XLS(actionEvent)}" value="Funcoes Cadastradas" />
                 </p:submenu>
                 
-               
-                
+                <p:submenu label="Logout" icon="ui-icon-note">
+                    <p:menuitem value="Logout" action="#{autenticacaoController.logout()}" />
+                    </p:submenu>
             </p:menubar>
+           
 
             <div id="content" class="center_content">
                 <ui:insert name="content">Seja Bem vindo !!!! <br></br>
