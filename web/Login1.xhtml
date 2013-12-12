@@ -38,7 +38,7 @@
 
             </p:panelGrid>
           
-                <p:commandButton value="Entrar" action="#{autenticacaoController.validar()}"/>
+            <p:commandButton value="Entrar" ajax="false" immediate="true" action="#{autenticacaoController.validar()}"/>
                  <p:commandButton value="Sair" ajax="false" immediate="true" action="${funcaoController.voltar()}" />
             
                 

@@ -69,44 +69,7 @@ public class FuncaoController implements Serializable {
         context.addMessage(null, new FacesMessage(msg));
     }
     
-    public void XLS(java.awt.event.ActionEvent actionEvent) throws JRException, IOException {
-        Connection conn;
-        String arquivo = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/relatorio/Funcoes Cadastradas.jasper");
-        try {
-
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/TrabalhoFinal [adm em ADM]");
-            java.sql.Statement sql = conn.createStatement();
-            ResultSet rs = sql.executeQuery("     \"ADM\".\"FUNCAO\" FUNCAO" +
-                    "SELECT\n" +
-                    "     FUNCAO.\"IDFUNCAO\" AS FUNCAO_IDFUNCAO,\n" +
-                    "     FUNCAO.\"HORASSEMANAIS\" AS FUNCAO_HORASSEMANAIS,\n" +
-                    "     FUNCAO.\"NOME\" AS FUNCAO_NOME\n" +
-                    "FROM\n");
-            JRDataSource ds = new JRResultSetDataSource(rs);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(arquivo, null, ds);
-
-         ttpServletResponse httpServletResponse = (HttpServletResponse)     FacesContext.getCurrentInstance().getExternalContext().getResponse();
-        httpServletResponse.addHeader("Content-disposition", "attachment; filename= relatorioController.XLS");
-        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
-        //JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-        JRXlsExporter xls = new JRXlsExporter();
-        xls.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-        xls.setParameter(JRExporterParameter.OUTPUT_STREAM, servletOutputStream);
-        xls.exportReport();
-        FacesContext.getCurrentInstance().responseComplete();
- 
-            
-            
-        } catch (JRException ex) {
-            Logger.getLogger(RelatorioController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RelatorioController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(RelatorioController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    }
+    
 
     public void salvar() {
         dao.Salvar(entidade);

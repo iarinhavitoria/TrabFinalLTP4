@@ -54,10 +54,13 @@ public class AdministradorController {
     }
 
     public String autenticar(){
-        if(entidade.getUsuarioAdmin()=="adm" && entidade.getSenhaAdmin()=="1234"){
-            
+        if("adm".equals(entidade.getUsuarioAdmin())){
+            if ("1234".equals(entidade.getSenhaAdmin())){
+                return "TemplateGeral.xhtml";
+            }
         } else {
-            
+            exibirMensagem("Dados nao correspondem!");
+            return "Login1.xhtml";
         }
         return null;
     }
