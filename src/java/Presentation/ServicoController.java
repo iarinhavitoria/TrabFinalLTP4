@@ -63,12 +63,12 @@ public class ServicoController implements Serializable {
     }
 
     public String editar() {
-        return "ServicoEditar.xhtml";
+        return "ServicoCadastrar.xhtml";
     }
 
     public String criar() {
         entidade = new Servico();
-        return "ServicoEditar.xhtml";
+        return "ServicoCadastrar.xhtml";
     }
 
     public String apagar() {

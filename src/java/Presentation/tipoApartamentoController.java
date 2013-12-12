@@ -66,12 +66,12 @@ public class tipoApartamentoController implements Serializable {
     }
 
     public String editar() {
-        return "TipoApartamentoEditar.xhtml";
+        return "TipoApartamentoCadastrar.xhtml";
     }
 
     public String criar() {
         entidade = new TipoApartamento();
-        return "TipoApartamentoEditar.xhtml";
+        return "TipoApartamentoCadastrar.xhtml";
     }
 
     public String apagar() {

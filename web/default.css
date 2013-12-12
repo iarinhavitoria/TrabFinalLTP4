@@ -23,7 +23,7 @@ a:link, a:visited {
 }
 
 a:link:hover, a:visited:hover  {
-  color: hotpink;
+  color: #036fab;
   font-weight : bold;
   text-decoration : underline;
 }
